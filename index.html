@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romone & Mélanie</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <img src="haut-gauche.png" class="coin coin-gauche" alt="">
+    <img src="haut-droite.png" class="coin coin-droite" alt="">
+
+    <div class="conteneur">
+
+        <img src="logo.png" class="logo" alt="Logo">
+
+        <h1>Galerie du mariage</h1>
+
+        <p class="texte">
+            Entrez votre code d'accès pour découvrir et partager les souvenirs de cette journée.
+        </p>
+
+        <input
+            type="password"
+            id="code"
+            placeholder="Code d'accès"
+        >
+
+        <button onclick="verifierCode()">
+            Entrer
+        </button>
+
+        <p id="erreur"></p>
+
+    </div>
+
+    <img src="bouquet.png" class="bouquet" alt="">
+
+    <script src="script.js"></script>
+
+</body>
+</html>

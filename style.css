@@ -1,0 +1,107 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#FBF8F5;
+    min-height:100vh;
+    font-family:Georgia, serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.conteneur{
+    max-width:450px;
+    padding:20px;
+}
+
+.logo{
+    width:220px;
+    margin-bottom:30px;
+}
+
+h1{
+    color:#7C6A58;
+    margin-bottom:15px;
+    font-weight:normal;
+}
+
+.texte{
+    color:#7C6A58;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:1px solid #d9cdbf;
+    border-radius:8px;
+    background:white;
+    margin-bottom:15px;
+    font-size:16px;
+}
+
+button{
+    background:#C9A96A;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+#erreur{
+    color:#b54d4d;
+    margin-top:15px;
+}
+
+.coin{
+    position:absolute;
+    width:220px;
+}
+
+.coin-gauche{
+    top:0;
+    left:0;
+}
+
+.coin-droite{
+    top:0;
+    right:0;
+}
+
+.bouquet{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:240px;
+}
+
+@media(max-width:768px){
+
+    .logo{
+        width:180px;
+    }
+
+    .coin{
+        width:140px;
+    }
+
+    .bouquet{
+        width:170px;
+    }
+
+}

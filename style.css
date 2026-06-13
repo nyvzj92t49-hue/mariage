@@ -30,6 +30,11 @@ body{
     margin-bottom:25px;
 }
 
+/* Bloc contenant le texte, le champ et le bouton */
+.bloc-connexion{
+    margin-top:60px;
+}
+
 h1{
     color:#7C6A58;
     margin-bottom:15px;
@@ -106,11 +111,16 @@ button:hover{
 
     .logo{
         width:180px;
+        margin-top:-50px;
         margin-bottom:20px;
     }
 
+    .bloc-connexion{
+        margin-top:60px;
+    }
+
     .coin{
-        width:140px;
+        width:380px;
     }
 
     .bouquet{

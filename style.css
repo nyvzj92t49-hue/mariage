@@ -141,3 +141,8 @@ button:hover{
 .pastille:hover{
     opacity:0.9;
 }
+.retour{
+    color:#7C6A58;
+    text-decoration:none;
+    font-size:18px;
+}

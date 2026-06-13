@@ -27,7 +27,7 @@ body{
 .logo{
     width:220px;
     margin-top:-50px;
-    margin-bottom:200px;
+    margin-bottom:100px;
 }
 
 h1{
@@ -118,4 +118,26 @@ button:hover{
         bottom:-100px;
     }
 
+}
+.menu-galerie{
+    margin-top:80px;
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.pastille{
+    display:block;
+    background:#C9A96A;
+    color:white;
+    text-decoration:none;
+    padding:25px;
+    border-radius:20px;
+    font-size:22px;
+    line-height:1.6;
+    transition:0.3s;
+}
+
+.pastille:hover{
+    opacity:0.9;
 }

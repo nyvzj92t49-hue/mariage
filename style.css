@@ -10,7 +10,7 @@ body{
     font-family:Georgia, serif;
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:flex-start;
     text-align:center;
     position:relative;
     overflow:hidden;
@@ -18,12 +18,15 @@ body{
 
 .conteneur{
     max-width:450px;
+    width:100%;
     padding:20px;
+    margin-top:40px;
+    z-index:2;
 }
 
 .logo{
     width:220px;
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
 
 h1{
@@ -56,6 +59,7 @@ button{
     border-radius:8px;
     cursor:pointer;
     font-size:16px;
+    margin-bottom:20px;
 }
 
 button:hover{
@@ -70,6 +74,7 @@ button:hover{
 .coin{
     position:absolute;
     width:220px;
+    z-index:1;
 }
 
 .coin-gauche{
@@ -84,16 +89,23 @@ button:hover{
 
 .bouquet{
     position:absolute;
-    bottom:0;
+    bottom:-120px;
     left:50%;
     transform:translateX(-50%);
-    width:240px;
+    width:300px;
+    z-index:0;
 }
 
 @media(max-width:768px){
 
+    .conteneur{
+        margin-top:60px;
+        padding:25px;
+    }
+
     .logo{
         width:180px;
+        margin-bottom:20px;
     }
 
     .coin{
@@ -101,7 +113,8 @@ button:hover{
     }
 
     .bouquet{
-        width:170px;
+        width:260px;
+        bottom:-100px;
     }
 
 }

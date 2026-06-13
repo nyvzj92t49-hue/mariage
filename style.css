@@ -131,10 +131,10 @@ button:hover{
     background:#C9A96A;
     color:white;
     text-decoration:none;
-    padding:25px;
+    padding:22px;
     border-radius:20px;
-    font-size:22px;
-    line-height:1.6;
+    font-size:20px;
+    font-family:Georgia, serif;
     transition:0.3s;
 }
 

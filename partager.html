@@ -1,77 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Partager mes photos</title>
-
-<link rel="stylesheet" href="style.css">
-
-<style>
-
-.upload-box{
-    margin-top:40px;
-}
-
-.upload-btn{
-    display:inline-block;
-    background:#C9A96A;
-    color:white;
-    padding:18px 35px;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:18px;
-}
-
-#photos{
-    display:none;
-}
-
-#message{
-    margin-top:20px;
-    color:#7C6A58;
-}
-
-</style>
-
-</head>
-<body>
-
-<img src="haut-gauche.png" class="coin coin-gauche" alt="">
-<img src="haut-droite.png" class="coin coin-droite" alt="">
-
-<div class="conteneur">
-
-    <img src="logo.png" class="logo" alt="">
-
-    <h1>Partager vos photos</h1>
-
-    <p class="texte">
-        Sélectionnez vos photos ou vidéos du mariage puis envoyez-les.
-    </p>
-
-    <div class="upload-box">
-
-        <label for="photos" class="upload-btn">
-            Choisir mes photos
-        </label>
-
-        <input
-            type="file"
-            id="photos"
-            multiple
-            accept="image/*,video/*"
-        >
-
-    </div>
-
-    <p id="message"></p>
-
-</div>
-
-<img src="bouquet.png" class="bouquet" alt="">
-
 <script>
 
 const input = document.getElementById("photos");
@@ -81,34 +7,47 @@ input.addEventListener("change", async () => {
 
     const fichiers = input.files;
 
-    if(!fichiers.length) return;
+    if (!fichiers.length) return;
 
-    message.innerHTML = "Envoi en cours...";
+    message.textContent = "Envoi en cours...";
 
-    for(let fichier of fichiers){
+    try {
 
-        const data = new FormData();
+        for (const fichier of fichiers) {
 
-        data.append("file", fichier);
-        data.append("upload_preset", "ml_default");
+            const data = new FormData();
 
-        await fetch(
-            "https://api.cloudinary.com/v1_1/duyhfyqjt/auto/upload",
-            {
-                method:"POST",
-                body:data
+            data.append("file", fichier);
+            data.append("upload_preset", "ml_default");
+
+            const response = await fetch(
+                "https://api.cloudinary.com/v1_1/duyhfyqjt/auto/upload",
+                {
+                    method: "POST",
+                    body: data
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("Erreur Cloudinary");
             }
-        );
+
+        }
+
+        message.textContent =
+        "Merci ❤️ Vos souvenirs ont bien été ajoutés à la galerie.";
+
+        input.value = "";
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.textContent =
+        "Une erreur est survenue pendant l'envoi. Merci de réessayer.";
 
     }
-
-    message.innerHTML =
-    "Merci ❤️
-Vos souvenirs ont bien été ajoutés à la galerie.";
 
 });
 
 </script>
-
-</body>
-</html>

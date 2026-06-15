@@ -1,45 +1,113 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partager mes photos</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>Partager mes photos</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.upload-box{
+    margin-top:40px;
+}
+
+.upload-btn{
+    display:inline-block;
+    background:#C9A96A;
+    color:white;
+    padding:18px 35px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+#photos{
+    display:none;
+}
+
+#message{
+    margin-top:20px;
+    color:#7C6A58;
+}
+
+</style>
+
 </head>
 <body>
 
-    <img src="haut-gauche.png" class="coin coin-gauche" alt="">
-    <img src="haut-droite.png" class="coin coin-droite" alt="">
+<img src="haut-gauche.png" class="coin coin-gauche" alt="">
+<img src="haut-droite.png" class="coin coin-droite" alt="">
 
-    <div class="conteneur">
+<div class="conteneur">
 
-        <img src="logo.png" class="logo" alt="Logo">
+    <img src="logo.png" class="logo" alt="">
 
-        <p class="texte">
-            Merci de partager avec nous vos photos.
-        </p>
+    <h1>Partager vos photos</h1>
+
+    <p class="texte">
+        Sélectionnez vos photos ou vidéos du mariage puis envoyez-les.
+    </p>
+
+    <div class="upload-box">
+
+        <label for="photos" class="upload-btn">
+            Choisir mes photos
+        </label>
 
         <input
             type="file"
             id="photos"
             multiple
-            accept="image/*"
+            accept="image/*,video/*"
         >
-
-        <button>
-            Envoyer les photos
-        </button>
-
-        <br><br>
-
-        <a href="galerie.html" class="retour">
-            Retour
-        </a>
 
     </div>
 
-    <img src="bouquet.png" class="bouquet" alt="">
+    <p id="message"></p>
+
+</div>
+
+<img src="bouquet.png" class="bouquet" alt="">
+
+<script>
+
+const input = document.getElementById("photos");
+const message = document.getElementById("message");
+
+input.addEventListener("change", async () => {
+
+    const fichiers = input.files;
+
+    if(!fichiers.length) return;
+
+    message.innerHTML = "Envoi en cours...";
+
+    for(let fichier of fichiers){
+
+        const data = new FormData();
+
+        data.append("file", fichier);
+        data.append("upload_preset", "ml_default");
+
+        await fetch(
+            "https://api.cloudinary.com/v1_1/duyhfyqjt/auto/upload",
+            {
+                method:"POST",
+                body:data
+            }
+        );
+
+    }
+
+    message.innerHTML =
+    "Merci ❤️ Vos photos ont été envoyées avec succès.";
+
+});
+
+</script>
 
 </body>
 </html>

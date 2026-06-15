@@ -1,3 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Partager mes photos</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.upload-box{
+    margin-top:40px;
+}
+
+.upload-btn{
+    display:inline-block;
+    background:#C9A96A;
+    color:white;
+    padding:18px 35px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+#photos{
+    display:none;
+}
+
+#message{
+    margin-top:20px;
+    color:#7C6A58;
+}
+
+</style>
+
+</head>
+<body>
+
+<img src="haut-gauche.png" class="coin coin-gauche" alt="">
+<img src="haut-droite.png" class="coin coin-droite" alt="">
+
+<div class="conteneur">
+
+```
+<img src="logo.png" class="logo" alt="">
+
+<h1>Partager vos photos</h1>
+
+<p class="texte">
+    Sélectionnez vos photos ou vidéos du mariage puis envoyez-les.
+</p>
+
+<div class="upload-box">
+
+    <label for="photos" class="upload-btn">
+        Choisir mes photos
+    </label>
+
+    <input
+        type="file"
+        id="photos"
+        multiple
+        accept="image/*,video/*"
+    >
+
+</div>
+
+<p id="message"></p>
+```
+
+</div>
+
+<img src="bouquet.png" class="bouquet" alt="">
+
 <script>
 
 const input = document.getElementById("photos");
@@ -31,7 +108,6 @@ input.addEventListener("change", async () => {
             if (!response.ok) {
                 throw new Error("Erreur Cloudinary");
             }
-
         }
 
         message.textContent =
@@ -45,9 +121,11 @@ input.addEventListener("change", async () => {
 
         message.textContent =
         "Une erreur est survenue pendant l'envoi. Merci de réessayer.";
-
     }
 
 });
 
 </script>
+
+</body>
+</html>

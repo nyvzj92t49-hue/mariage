@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Photos du mariage</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.galerie-photos{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    gap:15px;
+    margin-top:40px;
+    width:100%;
+}
+
+.galerie-photos img{
+    width:100%;
+    aspect-ratio:1;
+    object-fit:cover;
+    border-radius:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.galerie-photos img:hover{
+    transform:scale(1.03);
+}
+
+</style>
+
+</head>
+<body>
+
+<img src="haut-gauche.png" class="coin coin-gauche" alt="">
+<img src="haut-droite.png" class="coin coin-droite" alt="">
+
+<div class="conteneur">
+
+    <img src="logo.png" class="logo" alt="Logo">
+
+    <h2>Photos du mariage</h2>
+
+    <div class="galerie-photos">
+
+        <img src="https://res.cloudinary.com/duyhfyqjt/image/upload/v1781544741/IMG_4587_jca3od.jpg">
+
+    </div>
+
+</div>
+
+<img src="bouquet.png" class="bouquet" alt="">
+
+</body>
+</html>

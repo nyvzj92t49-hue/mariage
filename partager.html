@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="fr">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +25,10 @@
     font-size:18px;
 }
 
+.upload-btn:hover{
+    opacity:0.9;
+}
+
 #photos{
     display:none;
 }
@@ -37,43 +41,38 @@
 </style>
 
 </head>
+
 <body>
 
 <img src="haut-gauche.png" class="coin coin-gauche" alt="">
 <img src="haut-droite.png" class="coin coin-droite" alt="">
 
-<div class="conteneur">
-
-```
 <img src="logo.png" class="logo" alt="">
 
-<h1>Partager vos photos</h1>
+<div class="conteneur">
 
-<p class="texte">
-    Sélectionnez vos photos ou vidéos du mariage puis envoyez-les.
-</p>
+    <h1>Partager vos photos</h1>
 
-<div class="upload-box">
+    <p class="texte">
+        Sélectionnez vos photos ou vidéos du mariage puis envoyez-les.
+    </p>
 
-    <label for="photos" class="upload-btn">
-        Choisir mes photos
-    </label>
+    <div class="upload-box">
 
-    <input
-        type="file"
-        id="photos"
-        multiple
-        accept="image/*,video/*"
-    >
+        <label for="photos" class="upload-btn">
+            Choisir mes photos
+        </label>
 
-</div>
+        <input
+            type="file"
+            id="photos"
+            multiple
+            accept="image/*,video/*"
+        >
 
-<p id="message"></p>
+    </div>
 
-<a href="galerie.html" class="bouton-retour">
-    ← Retour
-</a>
-```
+    <p id="message"></p>
 
 </div>
 

@@ -4,60 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Partager mes photos</title>
-
 <link rel="stylesheet" href="style.css">
-
-<style>
-
-.upload-box{
-    margin-top:40px;
-}
-
-.upload-btn{
-    display:inline-block;
-    background:#C9A96A;
-    color:white;
-    padding:18px 35px;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:18px;
-}
-
-.upload-btn:hover{
-    opacity:0.9;
-}
-
-.album-btn{
-    display:inline-block;
-    margin-top:18px;
-    background:white;
-    color:#C9A96A;
-    border:2px solid #C9A96A;
-    padding:16px 35px;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:18px;
-    text-decoration:none;
-}
-
-.album-btn:hover{
-    background:#C9A96A;
-    color:white;
-}
-
-#photos{
-    display:none;
-}
-
-#message{
-    margin-top:20px;
-    color:#7C6A58;
-}
-
-</style>
-
 </head>
 
 <body>
@@ -65,94 +13,31 @@
 <img src="haut-gauche.png" class="coin coin-gauche" alt="">
 <img src="haut-droite.png" class="coin coin-droite" alt="">
 
-<img src="logo.png" class="logo" alt="">
-
 <div class="conteneur">
 
-    <h1>Partager vos photos</h1>
+    <img src="logo.png" class="logo" alt="">
+
+    <h1>Partager vos souvenirs</h1>
 
     <p class="texte">
-        Sélectionnez vos photos ou vidéos du mariage puis envoyez-les.
+        Ajoutez vos photos du mariage ou consultez l'album partagé.
     </p>
 
-    <div class="upload-box">
+    <div class="menu-galerie">
 
-        <label for="photos" class="upload-btn">
-            Choisir mes photos
-        </label>
+        <a href="envoyer.html" class="pastille">
+            Partagez vos photos
+        </a>
 
-        <input
-            type="file"
-            id="photos"
-            multiple
-            accept="image/*,video/*"
-        >
-
-        <br>
-
-        <a href="galerie.html" class="album-btn">
-            Voir la galerie
+        <a href="galerie.html" class="pastille">
+            Voir l'album
         </a>
 
     </div>
 
-    <p id="message"></p>
-
 </div>
 
 <img src="bouquet.png" class="bouquet" alt="">
-
-<script>
-
-const input = document.getElementById("photos");
-const message = document.getElementById("message");
-
-input.addEventListener("change", async () => {
-
-    const fichiers = input.files;
-
-    if (!fichiers.length) return;
-
-    message.textContent = "Envoi en cours...";
-
-    try {
-
-        for (const fichier of fichiers) {
-
-            const data = new FormData();
-
-            data.append("file", fichier);
-            data.append("upload_preset", "ml_default");
-
-            const response = await fetch(
-                "https://api.cloudinary.com/v1_1/duyhfyqjt/auto/upload",
-                {
-                    method: "POST",
-                    body: data
-                }
-            );
-
-            if (!response.ok) {
-                throw new Error("Erreur Cloudinary");
-            }
-        }
-
-        message.textContent =
-        "Merci ❤️ Vos souvenirs ont bien été ajoutés à la galerie.";
-
-        input.value = "";
-
-    } catch (error) {
-
-        console.error(error);
-
-        message.textContent =
-        "Une erreur est survenue pendant l'envoi. Merci de réessayer.";
-    }
-
-});
-
-</script>
 
 </body>
 </html>

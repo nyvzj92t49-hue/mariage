@@ -192,3 +192,22 @@ button:hover{
     }
 
 }
+.album-conteneur{
+    max-width:900px;
+}
+
+.album-grid{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+    gap:12px;
+}
+
+.album-grid img,
+.album-grid video{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    border-radius:10px;
+    background:white;
+}

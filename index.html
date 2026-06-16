@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Rom & Mél</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Icône iPhone / iPad -->
-    <link rel="apple-touch-icon" href="icon.png">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="icon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariage Mélanie et Romain</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <img src="haut-gauche.png" class="coin coin-gauche" alt="">
-    <img src="haut-droite.png" class="coin coin-droite" alt="">
+<img src="haut-gauche.png" class="coin coin-gauche" alt="">
+<img src="haut-droite.png" class="coin coin-droite" alt="">
 
-    <div class="conteneur">
+<div class="conteneur">
 
-        <img src="logo.png" class="logo" alt="Logo">
+    <img src="logo.png" class="logo" alt="">
 
-        <div class="connexion">
+    <div class="connexion">
 
-            <p class="texte">
-                Entrez votre code d'accès pour découvrir et partager les souvenirs de cette journée.
-            </p>
+        <h1>Bienvenue</h1>
 
-            <input
-                type="password"
-                id="code"
-                placeholder="Code d'accès"
-            >
+        <p class="texte">
+            Entrez le code pour accéder à l'espace photos du mariage.
+        </p>
 
-            <button onclick="verifierCode()">
-                Entrer
-            </button>
+        <input type="password" id="code" placeholder="Code d'accès">
 
-            <p id="erreur"></p>
+        <button onclick="verifierCode()">Entrer</button>
 
-        </div>
+        <p id="erreur"></p>
 
     </div>
 
-    <img src="bouquet.png" class="bouquet" alt="">
+</div>
 
-    <script src="script.js"></script>
+<img src="bouquet.png" class="bouquet" alt="">
+
+<script>
+
+function verifierCode() {
+    const code = document.getElementById("code").value;
+    const erreur = document.getElementById("erreur");
+
+    if (code === "1234") {
+        window.location.href = "partager.html";
+    } else {
+        erreur.textContent = "Code incorrect.";
+    }
+}
+
+</script>
 
 </body>
 </html>

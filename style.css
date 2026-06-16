@@ -10,7 +10,7 @@ body{
     font-family:Georgia, serif;
     text-align:center;
     position:relative;
-    overflow:hidden;
+    overflow-x:hidden;
 }
 
 .conteneur{
@@ -28,7 +28,6 @@ body{
     margin:0 auto 50px auto;
 }
 
-/* Bloc texte + champ + bouton */
 .connexion{
     margin-top:80px;
 }
@@ -44,53 +43,6 @@ h2{
     color:#7C6A58;
     margin-bottom:35px;
     line-height:1.6;
-}
-
-.upload-box{
-    margin-top:40px;
-}
-
-.upload-btn{
-    display:inline-block;
-    background:#C9A96A;
-    color:white;
-    padding:18px 35px;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:18px;
-    text-decoration:none;
-}
-
-.upload-btn:hover{
-    opacity:0.9;
-}
-
-.album-btn{
-    display:inline-block;
-    margin-top:18px;
-    background:white;
-    color:#C9A96A;
-    border:2px solid #C9A96A;
-    padding:16px 35px;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:18px;
-    text-decoration:none;
-}
-
-.album-btn:hover{
-    background:#C9A96A;
-    color:white;
-}
-
-#photos{
-    display:none;
-}
-
-#message{
-    margin-top:20px;
-    color:#7C6A58;
-    line-height:1.5;
 }
 
 input{
@@ -112,6 +64,7 @@ button{
     cursor:pointer;
     font-size:16px;
     margin-bottom:20px;
+    font-family:Georgia, serif;
 }
 
 button:hover{
@@ -121,6 +74,70 @@ button:hover{
 #erreur{
     color:#b54d4d;
     margin-top:15px;
+}
+
+.upload-box{
+    margin-top:40px;
+}
+
+.upload-btn{
+    display:inline-block;
+    background:#C9A96A;
+    color:white;
+    padding:18px 35px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+    text-decoration:none;
+}
+
+.upload-btn:hover{
+    opacity:0.9;
+}
+
+#photos{
+    display:none;
+}
+
+#message{
+    margin-top:20px;
+    color:#7C6A58;
+    line-height:1.5;
+}
+
+.menu-galerie{
+    margin-top:50px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.pastille{
+    display:block;
+    background:#C9A96A;
+    color:white;
+    text-decoration:none;
+    padding:22px;
+    border-radius:20px;
+    font-size:20px;
+    font-family:Georgia, serif;
+    transition:0.3s;
+}
+
+.pastille:hover{
+    opacity:0.9;
+}
+
+.bouton-retour{
+    display:inline-block;
+    margin-top:25px;
+    color:#7C6A58;
+    text-decoration:none;
+    font-size:15px;
+}
+
+.bouton-retour:hover{
+    text-decoration:underline;
 }
 
 .coin{
@@ -146,47 +163,6 @@ button:hover{
     transform:translateX(-50%);
     width:300px;
     z-index:0;
-}
-
-.menu-galerie{
-    margin-top:80px;
-    display:flex;
-    flex-direction:column;
-    gap:25px;
-}
-
-.pastille{
-    display:block;
-    background:#C9A96A;
-    color:white;
-    text-decoration:none;
-    padding:22px;
-    border-radius:20px;
-    font-size:20px;
-    font-family:Georgia, serif;
-    transition:0.3s;
-}
-
-.pastille:hover{
-    opacity:0.9;
-}
-
-.retour{
-    color:#7C6A58;
-    text-decoration:none;
-    font-size:18px;
-}
-
-.bouton-retour{
-    display:inline-block;
-    margin-top:25px;
-    color:#7C6A58;
-    text-decoration:none;
-    font-size:15px;
-}
-
-.bouton-retour:hover{
-    text-decoration:underline;
 }
 
 @media(max-width:768px){

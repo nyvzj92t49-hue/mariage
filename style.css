@@ -11,6 +11,10 @@ body{
     text-align:center;
     position:relative;
     overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
 .conteneur{
@@ -154,20 +158,14 @@ button:hover{
     max-width:450px;
     width:100%;
     padding:20px;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    z-index:2;
+    margin:0 auto;
+    text-align:center;
 }
 
-.logo{
-    position:absolute;
-    top:40px;
-    left:50%;
-    transform:translateX(-50%);
+    .logo{
     width:220px;
-    z-index:2;
+    display:block;
+    margin:30px auto 0 auto;
 }
 
     .connexion{

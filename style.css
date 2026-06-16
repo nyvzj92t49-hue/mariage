@@ -50,6 +50,49 @@ h2{
     margin-top:40px;
 }
 
+.upload-btn{
+    display:inline-block;
+    background:#C9A96A;
+    color:white;
+    padding:18px 35px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+    text-decoration:none;
+}
+
+.upload-btn:hover{
+    opacity:0.9;
+}
+
+.album-btn{
+    display:inline-block;
+    margin-top:18px;
+    background:white;
+    color:#C9A96A;
+    border:2px solid #C9A96A;
+    padding:16px 35px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+    text-decoration:none;
+}
+
+.album-btn:hover{
+    background:#C9A96A;
+    color:white;
+}
+
+#photos{
+    display:none;
+}
+
+#message{
+    margin-top:20px;
+    color:#7C6A58;
+    line-height:1.5;
+}
+
 input{
     width:100%;
     padding:15px;

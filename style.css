@@ -140,6 +140,26 @@ button:hover{
     text-decoration:underline;
 }
 
+.album-conteneur{
+    max-width:900px;
+}
+
+.album-grid{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+    gap:12px;
+}
+
+.album-grid img,
+.album-grid video{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    border-radius:10px;
+    background:white;
+}
+
 .coin{
     position:absolute;
     width:380px;
@@ -173,6 +193,11 @@ button:hover{
         padding:20px;
     }
 
+    .album-conteneur{
+        width:95%;
+        margin-top:90px;
+    }
+
     .logo{
         width:180px;
         margin-bottom:40px;
@@ -191,23 +216,14 @@ button:hover{
         bottom:-100px;
     }
 
-}
-.album-conteneur{
-    max-width:900px;
-}
+    .album-grid{
+        grid-template-columns:repeat(2, 1fr);
+        gap:10px;
+    }
 
-.album-grid{
-    margin-top:30px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
-    gap:12px;
-}
+    .album-grid img,
+    .album-grid video{
+        height:145px;
+    }
 
-.album-grid img,
-.album-grid video{
-    width:100%;
-    height:160px;
-    object-fit:cover;
-    border-radius:10px;
-    background:white;
 }

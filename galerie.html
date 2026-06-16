@@ -26,12 +26,8 @@
         Retrouvez ici les souvenirs partagés par les invités.
     </p>
 
-    <div class="album-grid">
-
-        <p class="texte">
-            Les photos apparaîtront ici.
-        </p>
-
+    <div id="album" class="album-grid">
+        <p class="texte">Chargement de l'album...</p>
     </div>
 
     <a href="partager.html" class="bouton-retour">
@@ -41,6 +37,65 @@
 </div>
 
 <img src="bouquet.png" class="bouquet" alt="">
+
+<script>
+
+const cloudName = "duyhfyqjt";
+const tag = "mariage";
+const album = document.getElementById("album");
+
+fetch(`https://res.cloudinary.com/${cloudName}/any/list/${tag}.json`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Album indisponible");
+        }
+
+        return response.json();
+    })
+    .then(data => {
+        album.innerHTML = "";
+
+        if (!data.resources || data.resources.length === 0) {
+            album.innerHTML = "<p class='texte'>Aucune photo pour le moment.</p>";
+            return;
+        }
+
+        data.resources.forEach(media => {
+            const publicId = media.public_id;
+            const format = media.format;
+            const type = media.resource_type;
+
+            if (type === "image") {
+                const img = document.createElement("img");
+
+                img.src =
+                `https://res.cloudinary.com/${cloudName}/image/upload/c_fill,w_500,h_500,q_auto,f_auto/${publicId}`;
+
+                img.alt = "";
+
+                album.appendChild(img);
+            }
+
+            if (type === "video") {
+                const video = document.createElement("video");
+
+                video.src =
+                `https://res.cloudinary.com/${cloudName}/video/upload/${publicId}.${format}`;
+
+                video.controls = true;
+
+                album.appendChild(video);
+            }
+        });
+    })
+    .catch(error => {
+        console.error(error);
+
+        album.innerHTML =
+        "<p class='texte'>Impossible de charger l'album pour le moment.</p>";
+    });
+
+</script>
 
 </body>
 </html>

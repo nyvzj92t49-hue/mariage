@@ -4,8 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Mariage Mélanie et Romain</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -27,7 +30,9 @@
 
         <input type="password" id="code" placeholder="Code d'accès">
 
-        <button onclick="verifierCode()">Entrer</button>
+        <button type="button" onclick="verifierCode()">
+            Entrer
+        </button>
 
         <p id="erreur"></p>
 
@@ -40,15 +45,22 @@
 <script>
 
 function verifierCode() {
-    const code = document.getElementById("code").value;
+    const code = document.getElementById("code").value.trim();
     const erreur = document.getElementById("erreur");
 
-    if (code === "RM140827") {
-    sessionStorage.setItem("accesMariage", "ok");
-    window.location.href = "partager.html";
-} else {
-    erreur.textContent = "Code incorrect.";
+    if (code === "1234") {
+        sessionStorage.setItem("accesMariage", "ok");
+        window.location.href = "partager.html";
+    } else {
+        erreur.textContent = "Code incorrect.";
+    }
 }
+
+document.getElementById("code").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        verifierCode();
+    }
+});
 
 </script>
 

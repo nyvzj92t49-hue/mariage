@@ -8,9 +8,6 @@ body{
     background:#FBF8F5;
     min-height:100vh;
     font-family:Georgia, serif;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
     text-align:center;
     position:relative;
     overflow:hidden;
@@ -20,14 +17,17 @@ body{
     max-width:450px;
     width:100%;
     padding:20px;
-    margin-top:80px;
+    position:absolute;
+    top:48%;
+    left:50%;
+    transform:translate(-50%,-50%);
     z-index:2;
 }
 
 .logo{
     width:220px;
     margin-top:-50px;
-    margin-bottom:40px;
+    margin-bottom:60px;
 }
 
 /* Bloc texte + champ + bouton */
@@ -44,8 +44,12 @@ h2{
 
 .texte{
     color:#7C6A58;
-    margin-bottom:25px;
+    margin-bottom:35px;
     line-height:1.6;
+}
+
+.upload-box{
+    margin-top:40px;
 }
 
 input{
@@ -147,13 +151,16 @@ button:hover{
 @media(max-width:768px){
 
     .conteneur{
-        margin-top:60px;
-        padding:25px;
+        width:90%;
+        top:48%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        padding:20px;
     }
 
     .logo{
         width:180px;
-        margin-bottom:20px;
+        margin-bottom:40px;
     }
 
     .connexion{

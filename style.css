@@ -158,6 +158,7 @@ button:hover{
     object-fit:cover;
     border-radius:10px;
     background:white;
+    cursor:pointer;
 }
 
 .coin{
@@ -183,6 +184,69 @@ button:hover{
     transform:translateX(-50%);
     width:300px;
     z-index:0;
+}
+
+.visionneuse{
+    position:fixed;
+    inset:0;
+    background:rgba(0, 0, 0, 0.85);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:10;
+}
+
+.visionneuse.active{
+    display:flex;
+}
+
+.visionneuse img{
+    max-width:85%;
+    max-height:85%;
+    object-fit:contain;
+    border-radius:10px;
+}
+
+.fermer-visionneuse,
+.nav-visionneuse{
+    position:absolute;
+    width:48px;
+    height:48px;
+    background:rgba(255, 255, 255, 0.92);
+    color:#7C6A58;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    font-family:Arial, sans-serif;
+    font-size:34px;
+    line-height:1;
+    margin:0;
+    padding:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.fermer-visionneuse{
+    top:20px;
+    right:20px;
+    font-size:32px;
+    padding-bottom:4px;
+}
+
+.nav-visionneuse{
+    top:50%;
+    transform:translateY(-50%);
+    font-size:42px;
+    padding-bottom:6px;
+}
+
+.precedent{
+    left:20px;
+}
+
+.suivant{
+    right:20px;
 }
 
 @media(max-width:768px){
@@ -226,77 +290,25 @@ button:hover{
         height:145px;
     }
 
-}
-.visionneuse{
-    position:fixed;
-    inset:0;
-    background:rgba(0, 0, 0, 0.85);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:10;
-}
-
-.visionneuse.active{
-    display:flex;
-}
-
-.visionneuse img{
-    max-width:85%;
-    max-height:85%;
-    object-fit:contain;
-    border-radius:10px;
-}
-
-.fermer-visionneuse,
-.nav-visionneuse{
-    position:absolute;
-    background:rgba(255, 255, 255, 0.9);
-    color:#7C6A58;
-    border:none;
-    border-radius:50%;
-    cursor:pointer;
-    font-family:Georgia, serif;
-    margin:0;
-}
-
-.fermer-visionneuse{
-    top:20px;
-    right:20px;
-    width:44px;
-    height:44px;
-    font-size:30px;
-    line-height:44px;
-}
-
-.nav-visionneuse{
-    top:50%;
-    transform:translateY(-50%);
-    width:48px;
-    height:48px;
-    font-size:38px;
-    line-height:42px;
-}
-
-.precedent{
-    left:20px;
-}
-
-.suivant{
-    right:20px;
-}
-
-@media(max-width:768px){
-
     .visionneuse img{
         max-width:90%;
         max-height:75%;
     }
 
+    .fermer-visionneuse,
     .nav-visionneuse{
         width:42px;
         height:42px;
-        font-size:34px;
+    }
+
+    .fermer-visionneuse{
+        top:15px;
+        right:15px;
+        font-size:30px;
+    }
+
+    .nav-visionneuse{
+        font-size:38px;
     }
 
     .precedent{

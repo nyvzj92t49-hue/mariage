@@ -43,11 +43,11 @@ function verifierCode() {
     const code = document.getElementById("code").value;
     const erreur = document.getElementById("erreur");
 
-    if (code === "RM140827") {
-        window.location.href = "partager.html";
-    } else {
-        erreur.textContent = "Code incorrect.";
-    }
+    if (code === "1234") {
+    sessionStorage.setItem("accesMariage", "ok");
+    window.location.href = "partager.html";
+} else {
+    erreur.textContent = "Code incorrect.";
 }
 
 </script>

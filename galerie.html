@@ -36,6 +36,16 @@
 
 </div>
 
+<div id="visionneuse" class="visionneuse">
+    <button class="fermer-visionneuse" onclick="fermerVisionneuse()">×</button>
+
+    <button class="nav-visionneuse precedent" onclick="photoPrecedente()">‹</button>
+
+    <img id="imageGrande" src="" alt="">
+
+    <button class="nav-visionneuse suivant" onclick="photoSuivante()">›</button>
+</div>
+
 <img src="bouquet.png" class="bouquet" alt="">
 
 <script>
@@ -43,6 +53,11 @@
 const cloudName = "duyhfyqjt";
 const tag = "mariage";
 const album = document.getElementById("album");
+const visionneuse = document.getElementById("visionneuse");
+const imageGrande = document.getElementById("imageGrande");
+
+let medias = [];
+let indexActuel = 0;
 
 fetch(`https://res.cloudinary.com/${cloudName}/any/list/${tag}.json`)
     .then(response => {
@@ -60,32 +75,20 @@ fetch(`https://res.cloudinary.com/${cloudName}/any/list/${tag}.json`)
             return;
         }
 
-        data.resources.forEach(media => {
+        medias = data.resources.filter(media => media.resource_type === "image");
+
+        medias.forEach((media, index) => {
             const publicId = media.public_id;
-            const format = media.format;
-            const type = media.resource_type;
 
-            if (type === "image") {
-                const img = document.createElement("img");
+            const img = document.createElement("img");
 
-                img.src =
-                `https://res.cloudinary.com/${cloudName}/image/upload/c_fill,w_500,h_500,q_auto,f_auto/${publicId}`;
+            img.src =
+            `https://res.cloudinary.com/${cloudName}/image/upload/c_fill,w_500,h_500,q_auto,f_auto/${publicId}`;
 
-                img.alt = "";
+            img.alt = "";
+            img.onclick = () => ouvrirVisionneuse(index);
 
-                album.appendChild(img);
-            }
-
-            if (type === "video") {
-                const video = document.createElement("video");
-
-                video.src =
-                `https://res.cloudinary.com/${cloudName}/video/upload/${publicId}.${format}`;
-
-                video.controls = true;
-
-                album.appendChild(video);
-            }
+            album.appendChild(img);
         });
     })
     .catch(error => {
@@ -94,6 +97,59 @@ fetch(`https://res.cloudinary.com/${cloudName}/any/list/${tag}.json`)
         album.innerHTML =
         "<p class='texte'>Impossible de charger l'album pour le moment.</p>";
     });
+
+function ouvrirVisionneuse(index) {
+    indexActuel = index;
+    afficherImage();
+    visionneuse.classList.add("active");
+}
+
+function fermerVisionneuse() {
+    visionneuse.classList.remove("active");
+}
+
+function afficherImage() {
+    const media = medias[indexActuel];
+
+    imageGrande.src =
+    `https://res.cloudinary.com/${cloudName}/image/upload/q_auto,f_auto/${media.public_id}`;
+}
+
+function photoPrecedente() {
+    indexActuel--;
+
+    if (indexActuel < 0) {
+        indexActuel = medias.length - 1;
+    }
+
+    afficherImage();
+}
+
+function photoSuivante() {
+    indexActuel++;
+
+    if (indexActuel >= medias.length) {
+        indexActuel = 0;
+    }
+
+    afficherImage();
+}
+
+document.addEventListener("keydown", event => {
+    if (!visionneuse.classList.contains("active")) return;
+
+    if (event.key === "Escape") {
+        fermerVisionneuse();
+    }
+
+    if (event.key === "ArrowLeft") {
+        photoPrecedente();
+    }
+
+    if (event.key === "ArrowRight") {
+        photoSuivante();
+    }
+});
 
 </script>
 

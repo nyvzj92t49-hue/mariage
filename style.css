@@ -131,13 +131,18 @@ button:hover{
 .bouton-retour{
     display:inline-block;
     margin-top:25px;
-    color:#7C6A58;
+    background:#C9A96A;
+    color:white;
     text-decoration:none;
-    font-size:15px;
+    font-size:16px;
+    font-family:Georgia, serif;
+    padding:14px 32px;
+    border-radius:10px;
 }
 
 .bouton-retour:hover{
-    text-decoration:underline;
+    opacity:0.9;
+    text-decoration:none;
 }
 
 .album-conteneur{

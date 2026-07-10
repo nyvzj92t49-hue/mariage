@@ -102,4 +102,10 @@ input.addEventListener("change", async () => {
 </script>
 
 </body>
+
+<script>
+if (sessionStorage.getItem("accesMariage") !== "ok") {
+    window.location.href = "index.html";
+}
+</script>
 </html>

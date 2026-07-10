@@ -257,7 +257,8 @@ button:hover{
     display:flex;
 }
 
-.visionneuse img{
+.visionneuse img,
+.visionneuse video{
     max-width:calc(100vw - 48px);
     max-height:calc(100svh - 112px);
     object-fit:contain;

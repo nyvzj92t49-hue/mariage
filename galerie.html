@@ -46,23 +46,23 @@
 
     <button class="nav-visionneuse precedent" onclick="photoPrecedente()">‹</button>
 
-    <img id="imageGrande" src="" alt="">
+    <div id="mediaGrand"></div>
 
     <button class="nav-visionneuse suivant" onclick="photoSuivante()">›</button>
 </div>
 
 <script>
 
-const cloudName = "duyhfyqjt";
-const tag = "mariage";
+// À remplacer plus tard par l'URL HTTPS de votre NAS ou de votre serveur public.
+const MEDIA_SERVER_URL = "http://localhost:3000";
 const album = document.getElementById("album");
 const visionneuse = document.getElementById("visionneuse");
-const imageGrande = document.getElementById("imageGrande");
+const mediaGrand = document.getElementById("mediaGrand");
 
 let medias = [];
 let indexActuel = 0;
 
-fetch(`https://res.cloudinary.com/${cloudName}/any/list/${tag}.json`)
+fetch(`${MEDIA_SERVER_URL}/media`)
     .then(response => {
         if (!response.ok) {
             throw new Error("Album indisponible");
@@ -73,25 +73,27 @@ fetch(`https://res.cloudinary.com/${cloudName}/any/list/${tag}.json`)
     .then(data => {
         album.innerHTML = "";
 
-        if (!data.resources || data.resources.length === 0) {
-            album.innerHTML = "<p class='texte'>Aucune photo pour le moment.</p>";
+        if (!data.media || data.media.length === 0) {
+            album.innerHTML = "<p class='texte'>Aucun souvenir pour le moment.</p>";
             return;
         }
 
-        medias = data.resources.filter(media => media.resource_type === "image");
+        medias = data.media;
 
         medias.forEach((media, index) => {
-            const publicId = media.public_id;
+            const element = document.createElement(media.type === "video" ? "video" : "img");
+            element.src = urlMedia(media);
+            element.alt = "";
+            element.loading = "lazy";
+            element.onclick = () => ouvrirVisionneuse(index);
 
-            const img = document.createElement("img");
+            if (media.type === "video") {
+                element.muted = true;
+                element.preload = "metadata";
+                element.playsInline = true;
+            }
 
-            img.src =
-            `https://res.cloudinary.com/${cloudName}/image/upload/c_fill,w_500,h_500,q_auto,f_auto/${publicId}`;
-
-            img.alt = "";
-            img.onclick = () => ouvrirVisionneuse(index);
-
-            album.appendChild(img);
+            album.appendChild(element);
         });
     })
     .catch(error => {
@@ -109,13 +111,27 @@ function ouvrirVisionneuse(index) {
 
 function fermerVisionneuse() {
     visionneuse.classList.remove("active");
+    mediaGrand.innerHTML = "";
 }
 
 function afficherImage() {
     const media = medias[indexActuel];
+    const element = document.createElement(media.type === "video" ? "video" : "img");
 
-    imageGrande.src =
-    `https://res.cloudinary.com/${cloudName}/image/upload/q_auto,f_auto/${media.public_id}`;
+    element.src = urlMedia(media);
+    element.alt = "";
+
+    if (media.type === "video") {
+        element.controls = true;
+        element.autoplay = true;
+        element.playsInline = true;
+    }
+
+    mediaGrand.replaceChildren(element);
+}
+
+function urlMedia(media) {
+    return `${MEDIA_SERVER_URL}/media/${encodeURIComponent(media.name)}`;
 }
 
 function photoPrecedente() {

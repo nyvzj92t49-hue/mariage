@@ -1,30 +1,43 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Envoyer mes photos</title>
+<title>Partager mes photos — Mélanie et Romain</title>
 <link rel="stylesheet" href="style.css">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="icon.png">
 <link rel="manifest" href="manifest.json">
-<meta name="apple-mobile-web-app-title" content="Mariage RM">
 <meta name="theme-color" content="#FBF8F5">
+<script>
+if (sessionStorage.getItem("accesMariage") !== "ok") {
+    window.location.replace("index.html");
+}
+</script>
+<style>
+.actions-souvenirs { display:flex; flex-direction:column; align-items:center; gap:20px; margin:28px auto; }
+.actions-souvenirs a { text-align:center; max-width:100%; box-sizing:border-box; }
+.aide-depot { max-width:390px; margin:22px auto; line-height:1.6; color:#796b5b; }
+.aide-depot strong { display:block; margin-bottom:8px; }
+</style>
 </head>
 <body>
 <img src="haut-gauche.png" class="coin coin-gauche" alt="">
 <img src="haut-droite.png" class="coin coin-droite" alt="">
-<div class="conteneur">
-<img src="logo.png" class="logo" alt="Mélanie et Romain">
-<h1>Partager vos photos</h1>
-<p class="texte">Ouverture de votre espace photos…</p>
-<a class="upload-btn" href="https://ug.link/server-maison/filemgr/collect-invite/?id=487d7f32030d4cfe9cd69b4f34c15bda">Ouvrir le dépôt de photos</a>
-<p><a href="partager.html" class="bouton-retour">Retour</a></p>
-</div>
+<main class="conteneur">
+    <img src="logo.png" class="logo" alt="Mélanie et Romain">
+    <h1>Partager vos souvenirs</h1>
+    <p class="texte">Merci de partager vos photos et vidéos du mariage avec nous.</p>
+    <div class="actions-souvenirs">
+        <a class="upload-btn" href="https://ug.link/server-maison/filemgr/collect-invite/?id=487d7f32030d4cfe9cd69b4f34c15bda" target="_blank" rel="noopener noreferrer">Ouvrir le dépôt de photos ↗</a>
+    </div>
+    <p class="aide-depot">Le dépôt s’ouvre dans un nouvel onglet. Choisissez vos souvenirs, puis appuyez sur « Téléverser ».</p>
+    <p class="aide-depot"><strong>Après l’envoi</strong>Quand les coches vertes apparaissent, vos fichiers sont envoyés. Fermez l’onglet du dépôt pour revenir ici.</p>
+    <div class="actions-souvenirs">
+        <a href="partager.html" class="bouton-retour">Retour au menu du mariage</a>
+        <a href="galerie.html" class="bouton-retour">Voir l’album</a>
+    </div>
+</main>
 <img src="bouquet.png" class="bouquet" alt="">
-<script>
-if (sessionStorage.getItem("accesMariage") !== "ok") { window.location.replace("index.html"); } else { window.location.replace("https://ug.link/server-maison/filemgr/collect-invite/?id=487d7f32030d4cfe9cd69b4f34c15bda"); }
-</script>
 </body>
 </html>

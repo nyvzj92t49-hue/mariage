@@ -12,107 +12,19 @@
 <meta name="apple-mobile-web-app-title" content="Mariage RM">
 <meta name="theme-color" content="#FBF8F5">
 </head>
-
 <body>
-
 <img src="haut-gauche.png" class="coin coin-gauche" alt="">
 <img src="haut-droite.png" class="coin coin-droite" alt="">
-
 <div class="conteneur">
-
-    <img src="logo.png" class="logo" alt="">
-
-    <h1>Partager vos photos</h1>
-
-    <p class="texte">
-        Sélectionnez vos photos ou vidéos du mariage puis envoyez-les.
-    </p>
-
-    <div class="upload-box">
-
-        <label for="photos" class="upload-btn">
-            Choisir mes photos
-        </label>
-
-        <input
-            type="file"
-            id="photos"
-            multiple
-            accept=".jpg,.jpeg,.png,.heic,.webp,.mp4,.mov,.m4v,.webm,image/jpeg,image/png,image/heic,image/heif,image/webp,video/mp4,video/quicktime,video/x-m4v,video/webm"
-        >
-
-    </div>
-
-    <p id="message"></p>
-
-    <a href="partager.html" class="bouton-retour">
-        Retour
-    </a>
-
+<img src="logo.png" class="logo" alt="Mélanie et Romain">
+<h1>Partager vos photos</h1>
+<p class="texte">Ouverture de votre espace photos…</p>
+<a class="upload-btn" href="https://ug.link/server-maison/filemgr/collect-invite/?id=487d7f32030d4cfe9cd69b4f34c15bda">Ouvrir le dépôt de photos</a>
+<p><a href="partager.html" class="bouton-retour">Retour</a></p>
 </div>
-
 <img src="bouquet.png" class="bouquet" alt="">
-
 <script>
-
-const input = document.getElementById("photos");
-const message = document.getElementById("message");
-
-// À remplacer plus tard par l'URL HTTPS de votre NAS ou de votre serveur public.
-const UPLOAD_SERVER_URL = "https://millions-staff-takes-price.trycloudflare.com";
-
-input.addEventListener("change", async () => {
-
-    const fichiers = input.files;
-
-    if (!fichiers.length) return;
-
-    message.textContent = "Envoi en cours...";
-
-    try {
-
-        for (const fichier of fichiers) {
-
-            const data = new FormData();
-
-            data.append("file", fichier);
-
-            const response = await fetch(
-                `${UPLOAD_SERVER_URL}/upload`,
-                {
-                    method: "POST",
-                    body: data
-                }
-            );
-
-            if (!response.ok) {
-                const result = await response.json().catch(() => ({}));
-                throw new Error(result.error || "Erreur du serveur d'envoi");
-            }
-        }
-
-        message.textContent =
-        "Merci, vos souvenirs ont bien été ajoutés à la galerie.";
-
-        input.value = "";
-
-    } catch (error) {
-
-        console.error(error);
-
-        message.textContent =
-        "Une erreur est survenue pendant l'envoi. Merci de réessayer.";
-    }
-
-});
-
+if (sessionStorage.getItem("accesMariage") !== "ok") { window.location.replace("index.html"); } else { window.location.replace("https://ug.link/server-maison/filemgr/collect-invite/?id=487d7f32030d4cfe9cd69b4f34c15bda"); }
 </script>
-
 </body>
-
-<script>
-if (sessionStorage.getItem("accesMariage") !== "ok") {
-    window.location.href = "index.html";
-}
-</script>
 </html>

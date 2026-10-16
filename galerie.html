@@ -15,162 +15,19 @@
 <meta name="theme-color" content="#FBF8F5">
 
 </head>
-
 <body>
-
 <img src="haut-gauche.png" class="coin coin-gauche" alt="">
 <img src="haut-droite.png" class="coin coin-droite" alt="">
-
-<div class="conteneur album-conteneur">
-
-    <img src="logo.png" class="logo" alt="">
-
-    <h1>Album du mariage</h1>
-
-    <p class="texte">
-        Retrouvez ici les souvenirs partagés par les invités.
-    </p>
-
-    <div id="album" class="album-grid">
-        <p class="texte">Chargement de l'album...</p>
-    </div>
-
-    <a href="partager.html" class="bouton-retour">
-        Retour
-    </a>
-
+<div class="conteneur">
+<img src="logo.png" class="logo" alt="Mélanie et Romain">
+<h1>Album du mariage</h1>
+<p class="texte">Ouverture de votre espace photos…</p>
+<a class="upload-btn" href="https://ug.link/server-maison/filemgr/share-download/?id=7016d42d539541ef8718eeaef02e2eda">Ouvrir l’album</a>
+<p><a href="partager.html" class="bouton-retour">Retour</a></p>
 </div>
-
-<div id="visionneuse" class="visionneuse">
-    <button class="fermer-visionneuse" onclick="fermerVisionneuse()">×</button>
-
-    <button class="nav-visionneuse precedent" onclick="photoPrecedente()">‹</button>
-
-    <div id="mediaGrand"></div>
-
-    <button class="nav-visionneuse suivant" onclick="photoSuivante()">›</button>
-</div>
-
+<img src="bouquet.png" class="bouquet" alt="">
 <script>
-
-// À remplacer plus tard par l'URL HTTPS de votre NAS ou de votre serveur public.
-const MEDIA_SERVER_URL = "https://millions-staff-takes-price.trycloudflare.com";
-const album = document.getElementById("album");
-const visionneuse = document.getElementById("visionneuse");
-const mediaGrand = document.getElementById("mediaGrand");
-
-let medias = [];
-let indexActuel = 0;
-
-fetch(`${MEDIA_SERVER_URL}/media`)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Album indisponible");
-        }
-
-        return response.json();
-    })
-    .then(data => {
-        album.innerHTML = "";
-
-        if (!data.media || data.media.length === 0) {
-            album.innerHTML = "<p class='texte'>Aucun souvenir pour le moment.</p>";
-            return;
-        }
-
-        medias = data.media;
-
-        medias.forEach((media, index) => {
-            const element = document.createElement(media.type === "video" ? "video" : "img");
-            element.src = urlMedia(media);
-            element.alt = "";
-            element.loading = "lazy";
-            element.onclick = () => ouvrirVisionneuse(index);
-
-            if (media.type === "video") {
-                element.muted = true;
-                element.preload = "metadata";
-                element.playsInline = true;
-            }
-
-            album.appendChild(element);
-        });
-    })
-    .catch(error => {
-        console.error(error);
-
-        album.innerHTML =
-        "<p class='texte'>Impossible de charger l'album pour le moment.</p>";
-    });
-
-function ouvrirVisionneuse(index) {
-    indexActuel = index;
-    afficherImage();
-    visionneuse.classList.add("active");
-}
-
-function fermerVisionneuse() {
-    visionneuse.classList.remove("active");
-    mediaGrand.innerHTML = "";
-}
-
-function afficherImage() {
-    const media = medias[indexActuel];
-    const element = document.createElement(media.type === "video" ? "video" : "img");
-
-    element.src = urlMedia(media);
-    element.alt = "";
-
-    if (media.type === "video") {
-        element.controls = true;
-        element.autoplay = true;
-        element.playsInline = true;
-    }
-
-    mediaGrand.replaceChildren(element);
-}
-
-function urlMedia(media) {
-    return `${MEDIA_SERVER_URL}/media/${encodeURIComponent(media.name)}`;
-}
-
-function photoPrecedente() {
-    indexActuel--;
-
-    if (indexActuel < 0) {
-        indexActuel = medias.length - 1;
-    }
-
-    afficherImage();
-}
-
-function photoSuivante() {
-    indexActuel++;
-
-    if (indexActuel >= medias.length) {
-        indexActuel = 0;
-    }
-
-    afficherImage();
-}
-
-document.addEventListener("keydown", event => {
-    if (!visionneuse.classList.contains("active")) return;
-
-    if (event.key === "Escape") {
-        fermerVisionneuse();
-    }
-
-    if (event.key === "ArrowLeft") {
-        photoPrecedente();
-    }
-
-    if (event.key === "ArrowRight") {
-        photoSuivante();
-    }
-});
-
+{ window.location.replace("https://ug.link/server-maison/filemgr/share-download/?id=7016d42d539541ef8718eeaef02e2eda"); }
 </script>
-
 </body>
 </html>
